@@ -11,10 +11,12 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/shopping-cart">Panier</a>
           </li>
-          <li *ngIf="!user"class="nav-item">
-            <a class="nav-link" routerLink="/login">Login</a>
-          </li>
-          <li ngbDropdown *ngIf="user"class="nav-item dropdown">
+          <ng-template #anonymousUser>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+          </ng-template>
+          <li ngbDropdown *ngIf="auth.user$ | async as user; else anonymousUser"class="nav-item dropdown">
             <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
               {{user.displayName}}
             </a>
