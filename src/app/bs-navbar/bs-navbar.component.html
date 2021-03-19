@@ -11,13 +11,18 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/shopping-cart">Panier</a>
           </li>
-          <li ngbDropdown class="nav-item dropdown">
-            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Username</a>
+          <li *ngIf="!user"class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+          <li ngbDropdown *ngIf="user"class="nav-item dropdown">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">
+              {{user.displayName}}
+            </a>
             <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
               <li ><a class="dropdown-item" routerLink="/my/orders">Mes commandes</a></li>
               <li ><a class="dropdown-item" routerLink="/admin/orders">Gérer mes commandes</a></li>
               <li ><a class="dropdown-item" routerLink="/admin/products">Gérer mes produits</a></li>
-              <li ><a class="dropdown-item" >Déconnexion</a></li>
+              <li (click)="logout()"><a class="dropdown-item" >Déconnexion</a></li>
             </ul>
           </li>
         </ul>
