@@ -13,6 +13,7 @@ import { AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import { FormsModule} from '@angular/forms';
+import { CustomFormsModule} from 'ng2-validation';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +54,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AngularFireAuthModule,
     NgbModule,
     FormsModule,
+    CustomFormsModule,
   ],
   providers: [
     AuthService,

@@ -24,6 +24,7 @@
     "angularfire2": "^4.0.0-rc.1",
     "bootstrap": "^5.0.0-beta2",
     "firebase": "^4.2.0",
+    "ng2-validation": "^4.2.0",
     "rxjs": "~6.4.0",
     "rxjs-compat": "^6.6.6",
     "tslib": "^1.10.0",

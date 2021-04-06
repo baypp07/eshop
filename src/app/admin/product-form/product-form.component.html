@@ -13,10 +13,11 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">€</span>
             </div>
-            <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required>
+            <input #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" required [min]="0">
         </div>
         <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-            prix obligatoire.
+            <div *ngIf="price.errors.required">prix obligatoire.</div>
+            <div *ngIf="price.errors.min">prix doit être égale ou supérieur à 0.</div>
         </div>
     </div>
     <div class="form-group">
@@ -33,9 +34,10 @@
     </div>
     <div class="form-group">
         <label for="imageUrl"> Image URL</label>
-        <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required>
+        <input #imageUrl="ngModel" ngModel name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
         <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-            Imageurl obligatoire.
+            <div *ngIf="imageUrl.errors.required">Imageurl obligatoire.</div>
+            <div *ngIf="imageUrl.errors.url">URL n'est pas validé.</div>
         </div>
     </div>
     <button class="btn btn-primary"> Enregistrer </button>
