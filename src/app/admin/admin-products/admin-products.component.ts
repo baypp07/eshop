@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit {
-  product$
+  products$
   constructor(private productService: ProductService) {
-    this.product$ = this.productService.getAll();
+    this.products$ = this.productService.getAll();
    }
 
   ngOnInit() {
