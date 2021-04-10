@@ -1,4 +1,10 @@
-<a routerLink="/admin/products/new" class="btn btn-primary"> Nouveau Produit</a>
+<p><a routerLink="/admin/products/new" class="btn btn-primary"> Nouveau Produit</a></p>
+<p>
+    <input 
+    #query
+    (ketup)='filter(query.value)'
+    type="text" class="form-control" placeholder="Recherche">
+    </p>
 
 <table class="table">
     <thead>
