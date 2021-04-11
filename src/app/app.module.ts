@@ -14,6 +14,8 @@ import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import { FormsModule} from '@angular/forms';
 import { CustomFormsModule} from 'ng2-validation';
+import { DataTableModule} from 'angular5-data-table';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +57,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     NgbModule,
     FormsModule,
     CustomFormsModule,
+    DataTableModule,
   ],
   providers: [
     AuthService,
