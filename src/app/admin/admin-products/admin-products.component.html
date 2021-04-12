@@ -24,7 +24,7 @@
          [sortable]="true"
          [resizable]="true">
          <ng-template #dataTableCell let-item="item">
-             {{ item.price | currency:'EUR':true}}
+             {{ item.price | currency:'EUR':'symbol'}}
          </ng-template>
         </data-table-column>
 

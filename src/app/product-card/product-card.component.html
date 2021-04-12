@@ -2,7 +2,7 @@
     <img *ngIf="product.imageUrl" [src]="product.imageUrl" class="card-img-top" alt={{product.title}}>
     <div class="card-body">
         <h5 class="card-title">{{product.title}}</h5>
-        <p class="card-text">{{product.price | currency:"EUR":true}}</p>
+        <p class="card-text">{{product.price | currency:"EUR":'symbol'}}</p>
     </div>
     <div class="card-footer d-grid gap-2">
         <a *ngIf="showActions"href="#" class="btn btn-primary">Ajouter au panier</a>
