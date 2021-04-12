@@ -48,14 +48,13 @@
 
     </div>
     <div class="col-md-6">
-        <div class="card" style="width: 18rem;">
+        <div *ngIf="product.title" class="card" style="width: 18rem;">
             <img [src]="product.imageUrl" *ngIf="product.imageUrl" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">{{ product.title}}</h5>
               <p class="card-text">{{ product.price | currency:'EUR':true}}</p>
             </div>
           </div>
-
     </div>
 </div>
 
