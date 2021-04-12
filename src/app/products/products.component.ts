@@ -24,14 +24,14 @@ export class ProductsComponent {
 
     productService
     .getAll()
-    .switchMap((products:Product[]) => {
+    .switchMap((products:Product[]) => { //run get product first and then category here we have 2 observable so we use switchmap
       this.products = products;
       return route.queryParamMap;
     })
     .subscribe(params => {
       this.category = params.get('category');
 
-      this.filteredProducts = (this.category) ? 
+      this.filteredProducts = (this.category) ? // if we have a category
       this.products.filter(p => p.category === this.category):
       this.products;
     });
