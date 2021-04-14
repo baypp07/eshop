@@ -5,6 +5,8 @@
         <p class="card-text">{{product.price | currency:"EUR":'symbol'}}</p>
     </div>
     <div class="card-footer d-grid gap-2">
-        <a *ngIf="showActions"href="#" class="btn btn-primary">Ajouter au panier</a>
+        <button 
+        (click)="addToCard(product)"
+        *ngIf="showActions"href="#" class="btn btn-primary">Ajouter au panier</button>
     </div>
 </div>
