@@ -12,22 +12,12 @@ export class ProductCardComponent {
   @Input('show-actions') showActions=true;
 
   constructor(
-    private shoppingCartService:ShoppingCartService,
+    private cartService:ShoppingCartService,
   ) { }
 
   addToCard(product:Product){
-    let cartId = localStorage.getItem('cardId');
-    if(!cartId){
-      this.shoppingCartService.create().then(result => {
-        localStorage.setItem('cartId', result.key);
 
-        //add product to cart
-
-      });
-      
-    } else{
-      //add product to cart
-    }
+    
   }
 
   ngOnInit() {
