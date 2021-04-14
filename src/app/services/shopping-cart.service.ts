@@ -38,14 +38,8 @@ export class ShoppingCartService {
   }
 
   async addToCart(product:Product){
-    let cartId = await this.getOrCreateCartId();
-    //set idcart the same as idproduct we dont want to declare unnecessary id
-    let item$ = this.getItem(cartId, product.$key);
-    item$.take(1).subscribe(item => {
-     item$.update({ product:product, quantity: (item.quantity || 0) + 1});
-    });
+    this.updateItemQuantity(product, 1);
   }
-
   // async addToCart(product:Product){
   //   let cartId = await this.getOrCreateCartId();
   //   //set idcart the same as idproduct we dont want to declare unnecessary id
@@ -54,6 +48,19 @@ export class ShoppingCartService {
   //     if(item.$exists())item$.update({ quantity: item.quantity + 1});
   //     else item$.set({product: product, quantity:1});
   //   });
-
   // }
+  async removeFromCart(product:Product){
+    this.updateItemQuantity(product, -1);
+  }
+
+  private async updateItemQuantity(product:Product, change:number){
+    let cartId = await this.getOrCreateCartId();
+    //set idcart the same as idproduct we dont want to declare unnecessary id
+    let item$ = this.getItem(cartId, product.$key);
+    item$.take(1).subscribe(item => {
+     item$.update({ product:product, quantity: (item.quantity || 0) + change});
+    });
+
+  }
+
 }
