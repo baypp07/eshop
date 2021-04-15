@@ -15,16 +15,29 @@ export class ShoppingCartService {
     private db:AngularFireDatabase
   ) { }
 
-  private create(){
-   return this.db.list('/shopping-carts').push({
-     dateCreated: new Date().getTime()
-   });
-  }
-
   async getCart():Promise<Observable<ShoppingCart>>{
     let cartId= await this.getOrCreateCartId();
     return this.db.object('/shopping-carts/' + cartId)
     .map((x:any) => new ShoppingCart(x.items));
+  }
+
+  async addToCart(product:Product){
+    this.updateItem(product, 1);
+  }
+  
+  async removeFromCart(product:Product){
+    this.updateItem(product, -1);
+  }
+
+  async clearCart(){
+   let cartId = await this.getOrCreateCartId();
+   this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
+  private create(){
+   return this.db.list('/shopping-carts').push({
+     dateCreated: new Date().getTime()
+   });
   }
 
   private getItem(cartId: string, productId:string){
@@ -38,22 +51,6 @@ export class ShoppingCartService {
       let result = await this.create();
         localStorage.setItem('cartId', result.key);
         return result.key;
-  }
-
-  async addToCart(product:Product){
-    this.updateItem(product, 1);
-  }
-  // async addToCart(product:Product){
-  //   let cartId = await this.getOrCreateCartId();
-  //   //set idcart the same as idproduct we dont want to declare unnecessary id
-  //   let item$ = this.db.object('/shopping-carts/' + cartId + '/items/' + product.$key);
-  //   item$.take(1).subscribe(item => {
-  //     if(item.$exists())item$.update({ quantity: item.quantity + 1});
-  //     else item$.set({product: product, quantity:1});
-  //   });
-  // }
-  async removeFromCart(product:Product){
-    this.updateItem(product, -1);
   }
 
   private async updateItem(product:Product, change:number){
