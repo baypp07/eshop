@@ -41,7 +41,7 @@ export class ShoppingCartService {
   }
 
   async addToCart(product:Product){
-    this.updateItemQuantity(product, 1);
+    this.updateItem(product, 1);
   }
   // async addToCart(product:Product){
   //   let cartId = await this.getOrCreateCartId();
@@ -53,16 +53,24 @@ export class ShoppingCartService {
   //   });
   // }
   async removeFromCart(product:Product){
-    this.updateItemQuantity(product, -1);
+    this.updateItem(product, -1);
   }
 
-  private async updateItemQuantity(product:Product, change:number){
+  private async updateItem(product:Product, change:number){
     let cartId = await this.getOrCreateCartId();
     //set idcart the same as idproduct we dont want to declare unnecessary id
     let item$ = this.getItem(cartId, product.$key);
     item$.take(1).subscribe((item: any) => {
-     item$.update({ product:product, quantity: (item.quantity || 0) + change});
+      let quantity = (item.quantity || 0) + change;
+      if(quantity === 0) item$.remove();
+       else item$.update({ 
+       //product:product,
+       title:product.title,
+       imageUrl:product.imageUrl,
+       price:product.price,
+       quantity: quantity
     });
+  });
 
   }
 
