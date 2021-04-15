@@ -1,31 +1,37 @@
 <h1> Votre panier</h1>
-<ng-container *ngIf="cart$ | async as cart">
+<div class="rol col-10" *ngIf="cart$ | async as cart">
     <p> Vous avez {{cart.totalItemCount}} artricles dans votre panier</p>
     <table class="table">
         <thead>
+         <tr>
             <th>Produit</th>
-            <th>Quantité</th>
-            <th> Prix </th>
+            <th  class="text-center" style="width:200px">Quantité</th>
+            <th  class="text-end" style="width:250px"> Prix </th>
+         </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of cart.items">
                 <td>{{item.title}}</td>
-                <td>
+                <td class="text-center">
                     <product-quantity [product]="item" [shopping-cart]="cart">
                     </product-quantity>
                 </td>
-                <td>{{ item.totalPrice | currency:'EUR':symbol}}</td>
+                <td class="text-end" >
+                    {{ item.totalPrice | currency:'EUR':symbol}}
+                </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <th></th>
                 <th></th>
-                <th>{{ cart.totalPrice | currency:'EUR':symbol}}</th>
+                <th class="text-end">
+                    {{ cart.totalPrice | currency:'EUR':symbol}}
+                </th>
             </tr>
         </tfoot>
     </table>
     <button (click)="clearCart()"class="btn btn-danger btn-sm">
         Supprimer tout
     </button>
-</ng-container>
+</div>
