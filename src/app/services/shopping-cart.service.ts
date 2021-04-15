@@ -7,8 +7,7 @@ import 'rxjs/add/operator/take';
   providedIn: 'root'
 })
 export class ShoppingCartService {
-  quantity:any;
-  item:any;
+
   constructor( 
     private db:AngularFireDatabase
   ) { }
@@ -57,7 +56,7 @@ export class ShoppingCartService {
     let cartId = await this.getOrCreateCartId();
     //set idcart the same as idproduct we dont want to declare unnecessary id
     let item$ = this.getItem(cartId, product.$key);
-    item$.take(1).subscribe(item => {
+    item$.take(1).subscribe((item: any) => {
      item$.update({ product:product, quantity: (item.quantity || 0) + change});
     });
 
