@@ -11,8 +11,8 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/shopping-cart">
               Panier
-              <span class="badge rounded-pill bg-warning text-dark">
-                {{ shoppingCartItemCount }}
+              <span *ngIf="cart$ | async as cart"class="badge rounded-pill bg-warning text-dark">
+                {{ cart.totalItemCount }}
               </span>
             </a>
           </li>
