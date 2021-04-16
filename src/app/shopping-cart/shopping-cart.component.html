@@ -35,7 +35,19 @@
             </tr>
         </tfoot>
     </table>
-    <button (click)="clearCart()"class="btn btn-danger btn-sm">
-        Supprimer tout
-    </button>
+    <div class="row">
+        <div class="col text-start">
+            <button *ngIf="cart.items.length" (click)="clearCart()" class="btn btn-danger btn-sm ">
+                Supprimer tout
+            </button>
+        </div>
+        <div class="col text-end">
+        <a *ngIf="cart.items.length"
+        routerLink="/check-out"
+         class="btn btn-primary ">
+            valider la commande
+        </a>
+    </div>
+    </div>
+
 </div>
