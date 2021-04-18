@@ -32,7 +32,8 @@
         </div>
     </div>
     <div>
-        <button (click)="placeOrder()" class="btn btn-primary">Valider votre commande
+        <button [disabled]='!f.vaid'
+        (click)="placeOrder()" class="btn btn-primary">Valider votre commande
         </button>
     </div>
 </form>
