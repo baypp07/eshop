@@ -1,20 +1,30 @@
 import { ShoppingCartService } from './shopping-cart.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
-import { ResourceLoader } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor(
-    private db:AngularFireDatabase,
-    private shoppingCartService: ShoppingCartService) { }
+  constructor(private db: AngularFireDatabase, private shoppingCartService: ShoppingCartService) { }
 
-  async placeOrder(order){
-    this.db.list('/oders').push(order);
-    let result =  this.shoppingCartService.clearCart();
+  async placeOrder(order) {
+    let result = await this.db.list('/orders').push(order);
+    this.shoppingCartService.clearCart();
     return result;
+  }
+
+  getOrders() { 
+    return this.db.list('/orders');
+  }
+
+  getOrdersByUser(userId: string) {
+    return this.db.list('/orders', {
+      query: {
+        orderByChild: 'userId',
+        equalTo: userId        
+      }
+    });
   }
 }
