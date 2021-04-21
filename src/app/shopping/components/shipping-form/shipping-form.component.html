@@ -10,7 +10,7 @@
     <div class="form-group">
         <label for="">Address</label>
         <input #addressLine1="ngModel" name="adresse" [(ngModel)]="shipping.addressLine1" type="text"
-            class="form-control" placeholder="numéro de rue ou avenue" required>
+            class="form-control"  placeholder="numéro de rue ou avenue" required>
         <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
             <div *ngIf="addressLine1.errors.required">Adresse obligatoire.</div>
         </div>
