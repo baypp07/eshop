@@ -1,6 +1,6 @@
 <h1> Votre panier</h1>
 <div class="rol col-10" *ngIf="cart$ | async as cart">
-    <p> Vous avez {{cart.totalItemsCount}} artricles dans votre panier</p>
+    <p> Nombre total d'article : {{cart.totalItemsCount}} </p>
     <table class="table">
         <thead>
          <tr>
