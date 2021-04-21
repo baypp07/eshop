@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { AdminModule } from './admin/admin.module';
@@ -21,6 +22,7 @@ import { AppComponent } from './app.component';
     AdminModule,
     ShoppingModule,
     CoreModule,
+    AppRoutingModule,
 
     AngularFireModule.initializeApp(environment.firebase),    
   ],

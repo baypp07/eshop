@@ -16,7 +16,7 @@ import { ShoppingCart } from '../../../shared/models/shopping-cart';
 })
 export class BsNavbarComponent implements OnInit {
   appUser: AppUser;
-  cart$:Observable<ShoppingCart>;
+  cart$: Observable<ShoppingCart>;
   
   
   constructor(
@@ -25,13 +25,12 @@ export class BsNavbarComponent implements OnInit {
     
   }
 
-  async ngOnInit() {
+  async ngOnInit() { 
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-
     this.cart$ = await this.shoppingCartService.getCart();
   }
-  
-  logout(){
+
+  logout() {
     this.auth.logout();
   }
 
