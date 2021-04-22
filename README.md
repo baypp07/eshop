@@ -1,6 +1,6 @@
 Demo : https://bayshop-6b094.web.app
 
-# Eshop
+# Eshop "Giusti Shop"
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
 
